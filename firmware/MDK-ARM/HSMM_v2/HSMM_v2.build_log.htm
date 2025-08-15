@@ -27,18 +27,54 @@ Project File Date:  08/15/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin'
 Build target 'HSMM_v2'
-compiling maze.c...
-..\Core\Src\maze.c(392): warning:  #1-D: last line of file ends without a newline
+compiling motor.c...
+..\Core\Src\motor.c(156): warning:  #223-D: function "abs" declared implicitly
+      motor->average_speed = (motor->average_speed * 0.99f) + (abs(motor->current_speed) * 0.01f);
+..\Core\Src\motor.c(132): warning:  #177-D: variable "current_time"  was declared but never referenced
+      uint32_t current_time = system_time_ms;
+..\Core\Src\motor.c(189): error:  #20: identifier "M_PI" is undefined
+                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
+..\Core\Src\motor.c(195): error:  #20: identifier "M_PI" is undefined
+                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
+..\Core\Src\motor.c(200): warning:  #223-D: function "abs" declared implicitly
+      return abs(motor->current_speed - motor->target_speed) <= MOTOR_POSITION_TOLERANCE;
+..\Core\Src\motor.c(219): warning:  #1-D: last line of file ends without a newline
   }
-..\Core\Src\maze.c(12): warning:  #177-D: variable "current_path"  was declared but never referenced
-  static OptimalPath_t current_path;
-..\Core\Src\maze.c(13): warning:  #550-D: variable "path_index"  was set but never used
-  static uint16_t path_index;
-..\Core\Src\maze.c(27): warning:  #177-D: function "Maze_IsDeadEnd"  was declared but never referenced
-  static bool Maze_IsDeadEnd(Coordinate_t pos);
-..\Core\Src\maze.c(29): warning:  #177-D: function "Maze_MarkPath"  was declared but never referenced
-  static void Maze_MarkPath(Coordinate_t start, Coordinate_t goal);
-..\Core\Src\maze.c: 5 warnings, 0 errors
+..\Core\Src\motor.c: 4 warnings, 2 errors
+compiling system.c...
+../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
+  void ssd1306_I2C_Init();
+../Core/Inc/system.h(251): warning:  #1-D: last line of file ends without a newline
+  #endif // SYSTEM_H
+..\Core\Src\system.c(287): error:  #20: identifier "M_PI" is undefined
+      float counts_per_mm = SYSTEM_ENCODER_CPR / (M_PI * SYSTEM_WHEEL_DIAMETER_MM);
+..\Core\Src\system.c(535): error:  #20: identifier "M_PI_2" is undefined
+          .duration_ms = (uint32_t)(M_PI_2 / g_system_config.motion_limits.max_angular_velocity_rads * 1000.0f),
+..\Core\Src\system.c(549): error:  #20: identifier "M_PI_2" is undefined
+          .duration_ms = (uint32_t)(M_PI_2 / g_system_config.motion_limits.max_angular_velocity_rads * 1000.0f),
+..\Core\Src\system.c(563): error:  #20: identifier "M_PI" is undefined
+          .duration_ms = (uint32_t)(M_PI / g_system_config.motion_limits.max_angular_velocity_rads * 1000.0f),
+..\Core\Src\system.c(761): warning:  #223-D: function "Motor_ResetPosition" declared implicitly
+      Motor_ResetPosition(&leftMotor);
+..\Core\Src\system.c(773): error:  #165: too few arguments in function call
+      bool success = Sensor_Calibrate();
+..\Core\Src\system.c(793): warning:  #223-D: function "Sensor_SelfTest" declared implicitly
+      if (!Sensor_SelfTest()) {
+..\Core\Src\system.c(799): warning:  #223-D: function "Motor_SelfTest" declared implicitly
+      if (!Motor_SelfTest(&leftMotor) || !Motor_SelfTest(&rightMotor)) {
+..\Core\Src\system.c(805): warning:  #223-D: function "Maze_SelfTest" declared implicitly
+      if (!Maze_SelfTest()) {
+..\Core\Src\system.c(898): warning:  #181-D: argument is incompatible with corresponding format string conversion
+               walls.left_distance_mm,
+..\Core\Src\system.c(899): warning:  #181-D: argument is incompatible with corresponding format string conversion
+               walls.right_distance_mm,
+..\Core\Src\system.c(900): warning:  #181-D: argument is incompatible with corresponding format string conversion
+               walls.front_distance_mm,
+..\Core\Src\system.c(958): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\system.c(839): warning:  #177-D: function "System_CalculatePIDOutput"  was declared but never referenced
+  static float System_CalculatePIDOutput(float error, float dt, 
+..\Core\Src\system.c: 11 warnings, 5 errors
 compiling main.c...
 ../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
   void ssd1306_I2C_Init();
@@ -81,57 +117,11 @@ compiling init.c...
 ..\Core\Src\init.c(52): error:  #165: too few arguments in function call
       Motor_Init(&rightMotor, &htim1, TIM_CHANNEL_4, RIGHT_MOT_DIR_GPIO_Port, RIGHT_MOT_DIR_Pin);
 ..\Core\Src\init.c(82): error:  #165: too few arguments in function call
-  		 Sensor_Init();
+  		Sensor_Init();
 ..\Core\Src\init.c(92): error:  #165: too few arguments in function call
       Menu_Init(&sysMenu, BootMenu, sizeof(BootMenu)/sizeof(BootMenu[0]));
 ..\Core\Src\init.c: 2 warnings, 12 errors
-compiling motor.c...
-..\Core\Src\motor.c(156): warning:  #223-D: function "abs" declared implicitly
-      motor->average_speed = (motor->average_speed * 0.99f) + (abs(motor->current_speed) * 0.01f);
-..\Core\Src\motor.c(132): warning:  #177-D: variable "current_time"  was declared but never referenced
-      uint32_t current_time = system_time_ms;
-..\Core\Src\motor.c(189): error:  #20: identifier "M_PI" is undefined
-                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
-..\Core\Src\motor.c(195): error:  #20: identifier "M_PI" is undefined
-                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
-..\Core\Src\motor.c(200): warning:  #223-D: function "abs" declared implicitly
-      return abs(motor->current_speed - motor->target_speed) <= MOTOR_POSITION_TOLERANCE;
-..\Core\Src\motor.c(219): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\motor.c: 4 warnings, 2 errors
-compiling menu.c...
-../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
-  void ssd1306_I2C_Init();
-..\Core\Src\menu.c(444): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\menu.c: 2 warnings, 0 errors
-compiling sensor.c...
-..\Core\Src\sensor.c(378): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\sensor.c: 1 warning, 0 errors
-compiling menu_router.c...
-../Core/Inc/menu_router.h(6): error:  #20: identifier "MenuActionID" is undefined
-  void Menu_ExecuteAction(MenuActionID id);
-../Core/Inc/menu_router.h(6): error:  #147: declaration is incompatible with "_Bool Menu_ExecuteAction(MenuContext_t *, MenuActionID_t)"  (declared at line 130 of "../Core/Inc/menu.h")
-  void Menu_ExecuteAction(MenuActionID id);
-../Core/Inc/menu_router.h(8): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
-  void ssd1306_I2C_Init();
-..\Core\Src\menu_router.c(8): error:  #20: identifier "SensorRawData" is undefined
-  extern 	SensorRawData sensorData;
-..\Core\Src\menu_router.c(9): error:  #20: identifier "SensorDistData" is undefined
-  extern 	SensorDistData sensorDistData;
-..\Core\Src\menu_router.c(47): error:  #20: identifier "SHORT_RANGE" is undefined
-  			Sensor_GetDistance(SHORT_RANGE, &sensorData , &sensorDistData);
-..\Core\Src\menu_router.c(47): error:  #140: too many arguments in function call
-  			Sensor_GetDistance(SHORT_RANGE, &sensorData , &sensorDistData);
-..\Core\Src\menu_router.c(68): error:  #20: identifier "MenuActionID" is undefined
-  void Menu_ExecuteAction(MenuActionID id) {
-..\Core\Src\menu_router.c(82): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\menu_router.c: 3 warnings, 7 errors
-"HSMM_v2\HSMM_v2.axf" - 26 Error(s), 19 Warning(s).
+"HSMM_v2\HSMM_v2.axf" - 24 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 

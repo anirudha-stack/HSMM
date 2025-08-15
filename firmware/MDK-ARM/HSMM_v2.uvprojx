@@ -490,16 +490,6 @@
               <FilePath>..\Core\Inc\menu.h</FilePath>
             </File>
             <File>
-              <FileName>menu_router.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Core\Inc\menu_router.h</FilePath>
-            </File>
-            <File>
-              <FileName>menu_router.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Core\Src\menu_router.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
@@ -558,6 +548,16 @@
               <FileName>maze.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Core\Src\maze.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\system.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\system.h</FilePath>
             </File>
           </Files>
         </Group>
