@@ -1,0 +1,81 @@
+// sensor.c
+#include "sensor.h"
+#include "ssd1306.h"
+#include "stm32f4xx_hal.h"   // for __HAL_TIM_*, HAL_ADC_*
+#include <stdio.h>
+
+// extern handles from CubeMX
+extern TIM_HandleTypeDef htim3;
+extern ADC_HandleTypeDef hadc1;
+
+// match your TIM3 ARR
+#define PWM_FULL  (__HAL_TIM_GET_AUTORELOAD(&htim3))
+#define PWM_SHORT (PWM_FULL/6)
+
+void Sensor_Init(void)
+{
+    // start PWM channels so we can change CCR on the fly
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);
+    HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_4);
+    // ensure all off
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, 0);
+}
+
+void Sensor_GetReadings(SensorRange range, SensorRawData *out)
+{
+    uint32_t convVals[4];
+    uint32_t duty = (range==FULL_RANGE ? PWM_FULL : PWM_SHORT);
+
+    for (uint8_t em=0; em<4; em++)
+    {
+        // 1) light only emitter 'em'
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, (em==0)? duty:0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, (em==1)? duty:0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, (em==2)? duty:0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, (em==3)? duty:0);
+        // force update
+        htim3.Instance->EGR = TIM_EGR_UG;
+
+        // 2) start the 4-channel scan
+        HAL_ADC_Start(&hadc1);
+
+        // 3) pull each conversion in order
+        for (uint8_t rank=0; rank<4; rank++)
+        {
+            HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+            convVals[rank] = HAL_ADC_GetValue(&hadc1);
+        }
+        HAL_ADC_Stop(&hadc1);
+
+        // 4) pick out only the sensor that matches this emitter
+        switch(em) {
+            case 0: out->sensor1 = convVals[0]; break;
+            case 1: out->sensor2 = convVals[1]; break;
+            case 2: out->sensor3 = convVals[2]; break;
+            default: out->sensor4 = convVals[3]; break;
+        }
+
+        // 5) turn this emitter off
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_3, 0);
+        __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_4, 0);
+        htim3.Instance->EGR = TIM_EGR_UG;
+    }
+
+    // 6) (optional) display on your OLED right here
+    SSD1306_Clear();
+    SSD1306_GotoXY(0,0);
+    char buf[40];
+    snprintf(buf,sizeof(buf),"L:%lu  A:%lu", out->sensor1, out->sensor2);
+    SSD1306_Puts(buf,&Font_7x10,SSD1306_COLOR_WHITE);
+    SSD1306_GotoXY(0,16);
+    snprintf(buf,sizeof(buf),"B:%lu  R:%lu", out->sensor3, out->sensor4);
+    SSD1306_Puts(buf,&Font_7x10,SSD1306_COLOR_WHITE);
+    SSD1306_UpdateScreen();
+}
