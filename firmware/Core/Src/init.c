@@ -79,7 +79,7 @@ void INIT_All(void)
 		HAL_Delay(550);
 		
 		
-		 Sensor_Init();
+		Sensor_Init();
 		 
 		SSD1306_Clear();
 	  SSD1306_GotoXY(5,5);

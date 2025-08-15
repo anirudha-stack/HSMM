@@ -39,6 +39,7 @@ hsmm_v2\init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hsmm_v2\init.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hsmm_v2\init.o: ../Core/Inc/init.h
 hsmm_v2\init.o: ../Core/Inc/motor.h
+hsmm_v2\init.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 hsmm_v2\init.o: ../Core/Inc/ssd1306.h
 hsmm_v2\init.o: ../Core/Inc/fonts.h
 hsmm_v2\init.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h

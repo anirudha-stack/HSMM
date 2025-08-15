@@ -21,46 +21,117 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.3.0.0
 Dialog DLL:      TCM.DLL V1.56.6.0
  
 <h2>Project:</h2>
-D:\Micromouse\HSMM_v2\MDK-ARM\HSMM_v2.uvprojx
-Project File Date:  06/06/2025
+D:\2025\HSMM\firmware\MDK-ARM\HSMM_v2.uvprojx
+Project File Date:  08/15/2025
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin'
 Build target 'HSMM_v2'
+compiling maze.c...
+..\Core\Src\maze.c(392): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\maze.c(12): warning:  #177-D: variable "current_path"  was declared but never referenced
+  static OptimalPath_t current_path;
+..\Core\Src\maze.c(13): warning:  #550-D: variable "path_index"  was set but never used
+  static uint16_t path_index;
+..\Core\Src\maze.c(27): warning:  #177-D: function "Maze_IsDeadEnd"  was declared but never referenced
+  static bool Maze_IsDeadEnd(Coordinate_t pos);
+..\Core\Src\maze.c(29): warning:  #177-D: function "Maze_MarkPath"  was declared but never referenced
+  static void Maze_MarkPath(Coordinate_t start, Coordinate_t goal);
+..\Core\Src\maze.c: 5 warnings, 0 errors
+compiling main.c...
+../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
+  void ssd1306_I2C_Init();
+../Core/Inc/init.h(10): error:  #20: identifier "Motor" is undefined
+  extern Motor leftMotor;
+../Core/Inc/init.h(11): error:  #20: identifier "Motor" is undefined
+  extern Motor rightMotor;
+../Core/Src/main.c(50): error:  #20: identifier "MenuContext" is undefined
+  extern MenuContext sysMenu;
+../Core/Src/main.c(51): error:  #20: identifier "SensorRawData" is undefined
+  SensorRawData sensorData;
+../Core/Src/main.c(52): error:  #20: identifier "SensorDistData" is undefined
+  SensorDistData sensorDistData;
+../Core/Src/main.c(120): warning:  #223-D: function "Menu_UpdateEncoderInputs" declared implicitly
+      Menu_UpdateEncoderInputs(scrollNow, selectNow);
+../Core/Src/main.c: 2 warnings, 5 errors
+compiling init.c...
+../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
+  void ssd1306_I2C_Init();
+../Core/Inc/init.h(10): error:  #20: identifier "Motor" is undefined
+  extern Motor leftMotor;
+../Core/Inc/init.h(11): error:  #20: identifier "Motor" is undefined
+  extern Motor rightMotor;
+..\Core\Src\init.c(5): error:  #20: identifier "Motor" is undefined
+  Motor leftMotor;
+..\Core\Src\init.c(6): error:  #20: identifier "Motor" is undefined
+  Motor rightMotor;
+..\Core\Src\init.c(9): error:  #20: identifier "MenuContext" is undefined
+  MenuContext sysMenu;
+..\Core\Src\init.c(12): error:  #20: identifier "MenuItem" is undefined
+  MenuItem CalibMenu[] = {
+..\Core\Src\init.c(19): error:  #20: identifier "MenuItem" is undefined
+  MenuItem BootMenu[] = {
+..\Core\Src\init.c(22): error:  #28: expression must have a constant value
+      { "Calibrate Sensors",ACTION_NONE, CalibMenu, 4 },
+..\Core\Src\init.c(43): warning:  #188-D: enumerated type mixed with another type
+  		HAL_GPIO_WritePin(USER_LED_GPIO_Port,USER_LED_Pin,1);
+..\Core\Src\init.c(50): error:  #165: too few arguments in function call
+      Motor_Init(&leftMotor,  &htim4, TIM_CHANNEL_4, LEFT_MOT_DIR_GPIO_Port, LEFT_MOT_DIR_Pin);
+..\Core\Src\init.c(52): error:  #165: too few arguments in function call
+      Motor_Init(&rightMotor, &htim1, TIM_CHANNEL_4, RIGHT_MOT_DIR_GPIO_Port, RIGHT_MOT_DIR_Pin);
+..\Core\Src\init.c(82): error:  #165: too few arguments in function call
+  		 Sensor_Init();
+..\Core\Src\init.c(92): error:  #165: too few arguments in function call
+      Menu_Init(&sysMenu, BootMenu, sizeof(BootMenu)/sizeof(BootMenu[0]));
+..\Core\Src\init.c: 2 warnings, 12 errors
+compiling motor.c...
+..\Core\Src\motor.c(156): warning:  #223-D: function "abs" declared implicitly
+      motor->average_speed = (motor->average_speed * 0.99f) + (abs(motor->current_speed) * 0.01f);
+..\Core\Src\motor.c(132): warning:  #177-D: variable "current_time"  was declared but never referenced
+      uint32_t current_time = system_time_ms;
+..\Core\Src\motor.c(189): error:  #20: identifier "M_PI" is undefined
+                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
+..\Core\Src\motor.c(195): error:  #20: identifier "M_PI" is undefined
+                           (M_PI * motor_config.wheel_diameter_mm / motor_config.gear_ratio);
+..\Core\Src\motor.c(200): warning:  #223-D: function "abs" declared implicitly
+      return abs(motor->current_speed - motor->target_speed) <= MOTOR_POSITION_TOLERANCE;
+..\Core\Src\motor.c(219): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\motor.c: 4 warnings, 2 errors
+compiling menu.c...
+../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
+  void ssd1306_I2C_Init();
+..\Core\Src\menu.c(444): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\menu.c: 2 warnings, 0 errors
+compiling sensor.c...
+..\Core\Src\sensor.c(378): warning:  #1-D: last line of file ends without a newline
+  }
+..\Core\Src\sensor.c: 1 warning, 0 errors
 compiling menu_router.c...
-../Core/Inc/menu.h(34): warning:  #1-D: last line of file ends without a newline
-  #endif
+../Core/Inc/menu_router.h(6): error:  #20: identifier "MenuActionID" is undefined
+  void Menu_ExecuteAction(MenuActionID id);
+../Core/Inc/menu_router.h(6): error:  #147: declaration is incompatible with "_Bool Menu_ExecuteAction(MenuContext_t *, MenuActionID_t)"  (declared at line 130 of "../Core/Inc/menu.h")
+  void Menu_ExecuteAction(MenuActionID id);
 ../Core/Inc/menu_router.h(8): warning:  #1-D: last line of file ends without a newline
   #endif
 ../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
   void ssd1306_I2C_Init();
+..\Core\Src\menu_router.c(8): error:  #20: identifier "SensorRawData" is undefined
+  extern 	SensorRawData sensorData;
+..\Core\Src\menu_router.c(9): error:  #20: identifier "SensorDistData" is undefined
+  extern 	SensorDistData sensorDistData;
+..\Core\Src\menu_router.c(47): error:  #20: identifier "SHORT_RANGE" is undefined
+  			Sensor_GetDistance(SHORT_RANGE, &sensorData , &sensorDistData);
+..\Core\Src\menu_router.c(47): error:  #140: too many arguments in function call
+  			Sensor_GetDistance(SHORT_RANGE, &sensorData , &sensorDistData);
+..\Core\Src\menu_router.c(68): error:  #20: identifier "MenuActionID" is undefined
+  void Menu_ExecuteAction(MenuActionID id) {
 ..\Core\Src\menu_router.c(82): warning:  #1-D: last line of file ends without a newline
   }
-..\Core\Src\menu_router.c: 4 warnings, 0 errors
-compiling main.c...
-../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
-  void ssd1306_I2C_Init();
-../Core/Inc/menu.h(34): warning:  #1-D: last line of file ends without a newline
-  #endif
-../Core/Src/main.c: 2 warnings, 0 errors
-compiling sensor.c...
-../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
-  void ssd1306_I2C_Init();
-..\Core\Src\sensor.c(86): warning:  #1-D: last line of file ends without a newline
-  }
-..\Core\Src\sensor.c: 2 warnings, 0 errors
-compiling init.c...
-../Core/Inc/ssd1306.h(238): warning:  #1295-D: Deprecated declaration ssd1306_I2C_Init - give arg types
-  void ssd1306_I2C_Init();
-../Core/Inc/menu.h(34): warning:  #1-D: last line of file ends without a newline
-  #endif
-..\Core\Src\init.c(43): warning:  #188-D: enumerated type mixed with another type
-  		HAL_GPIO_WritePin(USER_LED_GPIO_Port,USER_LED_Pin,1);
-..\Core\Src\init.c: 3 warnings, 0 errors
-linking...
-Program Size: Code=13618 RO-data=2626 RW-data=200 ZI-data=2912  
-FromELF: creating hex file...
-"HSMM_v2\HSMM_v2.axf" - 0 Error(s), 11 Warning(s).
+..\Core\Src\menu_router.c: 3 warnings, 7 errors
+"HSMM_v2\HSMM_v2.axf" - 26 Error(s), 19 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -82,7 +153,8 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE@6.1.0
-Build Time Elapsed:  00:00:05
+Target not created.
+Build Time Elapsed:  00:00:09
 </pre>
 </body>
 </html>

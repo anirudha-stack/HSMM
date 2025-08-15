@@ -1,7 +1,7 @@
 hsmm_v2\menu.o: ..\Core\Src\menu.c
 hsmm_v2\menu.o: ../Core/Inc/menu.h
 hsmm_v2\menu.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
-hsmm_v2\menu.o: ../Core/Inc/menu_router.h
+hsmm_v2\menu.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 hsmm_v2\menu.o: ../Core/Inc/ssd1306.h
 hsmm_v2\menu.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 hsmm_v2\menu.o: ../Core/Inc/stm32f4xx_hal_conf.h
@@ -41,3 +41,4 @@ hsmm_v2\menu.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 hsmm_v2\menu.o: ../Core/Inc/fonts.h
 hsmm_v2\menu.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
 hsmm_v2\menu.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdlib.h
+hsmm_v2\menu.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h

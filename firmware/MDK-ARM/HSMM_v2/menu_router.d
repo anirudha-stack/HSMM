@@ -2,6 +2,7 @@ hsmm_v2\menu_router.o: ..\Core\Src\menu_router.c
 hsmm_v2\menu_router.o: ../Core/Inc/menu_router.h
 hsmm_v2\menu_router.o: ../Core/Inc/menu.h
 hsmm_v2\menu_router.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
+hsmm_v2\menu_router.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 hsmm_v2\menu_router.o: ../Core/Inc/ssd1306.h
 hsmm_v2\menu_router.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 hsmm_v2\menu_router.o: ../Core/Inc/stm32f4xx_hal_conf.h

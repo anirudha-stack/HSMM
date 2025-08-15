@@ -1,7 +1,5 @@
 hsmm_v2\sensor.o: ..\Core\Src\sensor.c
 hsmm_v2\sensor.o: ../Core/Inc/sensor.h
-hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
-hsmm_v2\sensor.o: ../Core/Inc/ssd1306.h
 hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
 hsmm_v2\sensor.o: ../Core/Inc/stm32f4xx_hal_conf.h
 hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h
@@ -9,6 +7,7 @@ hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Include/core_cm4.h
+hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Include/cmsis_version.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
 hsmm_v2\sensor.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
@@ -37,7 +36,6 @@ hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 hsmm_v2\sensor.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-hsmm_v2\sensor.o: ../Core/Inc/fonts.h
+hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
+hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\math.h
 hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
-hsmm_v2\sensor.o: D:\Softwares\STM_Tools\Keil\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdlib.h
-hsmm_v2\sensor.o: ../Core/Inc/sensorCalib.h

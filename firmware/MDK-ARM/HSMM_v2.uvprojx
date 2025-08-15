@@ -549,6 +549,16 @@
               <FileType>5</FileType>
               <FilePath>..\Core\Inc\sensorCalib.h</FilePath>
             </File>
+            <File>
+              <FileName>maze.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\maze.h</FilePath>
+            </File>
+            <File>
+              <FileName>maze.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\maze.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
